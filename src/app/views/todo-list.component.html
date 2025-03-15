@@ -1,0 +1,13 @@
+<div>
+    <input [(ngModel)]="taskInput" placeholder="Add a new task" />
+    <button (click)="addTodo()">Add Task</button>
+  </div>
+  
+  <ul>
+    <li *ngFor="let todo of todos">
+      <input type="checkbox" [checked]="todo.completed" (change)="toggleComplete(todo.id)" />
+      {{ todo.task }}
+      <button (click)="removeTodo(todo.id)">Delete</button>
+    </li>
+  </ul>
+  
