@@ -19,4 +19,13 @@ export class TodoController {
       todo.completed = !todo.completed;
     }
   }
+  
+  getTodos(filter: 'all' | 'completed' | 'pending'): Todo[] {
+    if (filter === 'completed') {
+      return this.todos.filter(todo => todo.completed);
+    } else if (filter === 'pending') {
+      return this.todos.filter(todo => !todo.completed);
+    }
+    return this.todos; 
+  }
 }

@@ -1,13 +1,18 @@
 <div>
-    <input [(ngModel)]="taskInput" placeholder="Add a new task" />
-    <button (click)="addTodo()">Add Task</button>
-  </div>
-  
-  <ul>
-    <li *ngFor="let todo of todos">
-      <input type="checkbox" [checked]="todo.completed" (change)="toggleComplete(todo.id)" />
-      {{ todo.task }}
-      <button (click)="removeTodo(todo.id)">Delete</button>
-    </li>
-  </ul>
-  
+  <input [(ngModel)]="taskInput" placeholder="Ajouter une tâche..." />
+  <button (click)="addTodo()">Ajouter</button>
+</div>
+
+<div>
+  <button (click)="changeFilter('all')" [class.active]="selectedFilter === 'all'">Tous</button>
+  <button (click)="changeFilter('pending')" [class.active]="selectedFilter === 'pending'">À faire</button>
+  <button (click)="changeFilter('completed')" [class.active]="selectedFilter === 'completed'">Terminés</button>
+</div>
+
+<ul>
+  <li *ngFor="let todo of todos">
+    <input type="checkbox" [checked]="todo.completed" (change)="toggleComplete(todo.id)">
+    <span [class.completed]="todo.completed">{{ todo.task }}</span>
+    <button (click)="removeTodo(todo.id)">❌</button>
+  </li>
+</ul>
